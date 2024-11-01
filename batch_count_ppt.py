@@ -8,10 +8,8 @@ all_files = sorted(os.listdir(path))
 pprint(all_files)
 print()
 
-source_files = sorted([path + '/' + file for file in all_files if 'eng.' not in file.lower()],
-                      key=lambda x: x.split('.')[-2][-1])
-out_files = sorted([path + '/' + file for file in all_files if 'eng.' in file.lower()],
-                   key=lambda x: x.split('.')[-2].replace('_', ' ').rstrip(' ENG')[-1])
+source_files = [path + '/' + file for file in all_files if 'eng.' not in file.lower()]
+out_files = [path + '/' + file for file in all_files if 'eng.' in file.lower()]
 
 
 total_count = 0
