@@ -25,16 +25,3 @@ for in_file, out_file in zip(source_files, out_files):
 
 
 print(total_count * 1.3)
-
-
-"""word_counts = 0
-for file in files:
-    try:
-        print(file + ':', end=' ')
-        words = count(file)
-        print(words)
-        word_counts += count(file)
-        files.remove(file)
-    except:
-        print('Processing error')
-        continue"""
