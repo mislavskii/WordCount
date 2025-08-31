@@ -10,7 +10,7 @@ class Processor:
         self.ru_count = 0
         self.russian_words = []
         self.other_words = []
-        for paragraph in self.paragraphs:
+        for paragraph in self.paragraphs: # type: ignore
             # print(paragraph)
             words = paragraph.lower().replace('\xa0', ' ').split(' ')
             for word in words:
@@ -29,7 +29,7 @@ class Processor:
             # print('\n')
             
     def translate(self):
-        for paragraph in self.paragraphs:
+        for paragraph in self.paragraphs: # type: ignore
             print(paragraph)
             translation = input()
 
