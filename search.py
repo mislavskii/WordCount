@@ -1,5 +1,7 @@
 import os
 import re
+from datetime import datetime as dt
+
 from processors import *
 
 
@@ -27,9 +29,11 @@ class  StringFinder:
                     self.matches.append((entry, doc_matches))
 
     def output_results(self):
+        time_pattern = "%Y-%m-%d %H:%M:%S"
         query = self.query
-        for file, hits in self.matches:
-            print(file.path, '\n')
+        for file, hits in sorted(self.matches, key=lambda x: x[0].stat().st_mtime, reverse=True):
+            last_modified = file.stat().st_mtime
+            print(file.path, dt.fromtimestamp(last_modified).strftime(time_pattern))
             for hit in hits:
                 print('\t' + re.sub(query, f'>>{query}<<', hit), '\n')
             print()
