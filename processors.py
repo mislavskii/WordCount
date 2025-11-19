@@ -43,7 +43,6 @@ class PPTProcessor(Processor):
     def __init__(self, path):
         self.document = Presentation(path)
         self.get_paragraphs()
-        self.get_russian_words()
         
     def get_paragraphs(self):
         self.paragraphs = []
@@ -67,7 +66,6 @@ class DocProcessor(Processor):
     def __init__(self, path):
         self.document = Document(path)
         self.get_paragraphs()
-        self.get_russian_words()
 
     def get_paragraphs(self):
         self.paragraphs = []
