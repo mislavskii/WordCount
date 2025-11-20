@@ -1,32 +1,21 @@
 from pptx import Presentation
 from docx import Document
-from datetime import datetime as dt
-
+# from googletrans import Translator
 
 class Processor:
     RU_CHARS = 'абвгдеёжзийклмнопрстуфхцчшщыэюя'
                             
     def get_russian_words(self):
-        self.ru_count = 0
         self.russian_words = []
         self.other_words = []
         for paragraph in self.paragraphs: # type: ignore
-            # print(paragraph)
-            words = paragraph.lower().replace('\xa0', ' ').split(' ')
+            words = paragraph.lower().replace('\xa0', ' ').split()
             for word in words:
                 word = word.strip()
                 if word:
-                    other = True
-                    for char in word:
-                        if char in self.RU_CHARS:
-                            self.russian_words.append(word)
-                            self.ru_count += 1
-                            other = False
-                            # print(word, end = ' ')
-                            break
-                if other:
-                    self.other_words.append(word)
-            # print('\n')
+                    self.russian_words.append(word
+                        ) if any(char in self.RU_CHARS for char in word
+                        ) else self.other_words.append(word)
             
     def translate(self):
         for paragraph in self.paragraphs: # type: ignore
